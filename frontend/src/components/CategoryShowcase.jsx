@@ -43,7 +43,8 @@ const CategoryShowcase = () => {
   }, []);
 
   const handleCategoryClick = (category) => {
-    navigate(`/search?category=${encodeURIComponent(category.name)}`);
+    // Navigate to dedicated category products page
+    navigate(`/category/${category._id}`);
   };
   const handleExploreMore = () => {
     navigate("/categories");

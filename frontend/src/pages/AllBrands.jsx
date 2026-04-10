@@ -37,8 +37,8 @@ const AllBrands = () => {
   }, []);
 
   const handleBrandClick = (brand) => {
-    // Navigate to search page with brand selected
-    navigate(`/search?brand=${encodeURIComponent(brand.name)}`);
+    // Navigate to dedicated brand products page
+    navigate(`/brand/${brand._id}`);
   };
 
   const Loading = () => (

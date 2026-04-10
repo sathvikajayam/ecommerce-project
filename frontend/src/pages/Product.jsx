@@ -6,6 +6,7 @@ import { addCart as apiAddCart } from "./action";
 import ProductCard from "../components/ProductCard";
 import { Navbar } from "../components";
 import * as publicCategoryService from "../service/publicCategoryService";
+import * as publicBrandService from "../service/publicBrandService";
 import toast from "react-hot-toast";
 import "../styles/Product.css";
 import ImageZoom from "react-image-magnifier-zoom";
@@ -175,6 +176,7 @@ const Product = () => {
   const products = useMemo(() => Array.isArray(rawProducts) ? rawProducts : (rawProducts.products || []), [rawProducts]);
   const variantGroups = useMemo(() => buildVariantGroups(product), [product]);
   const [categoryId, setCategoryId] = useState("");
+  const [brandId, setBrandId] = useState("");
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -240,23 +242,35 @@ const Product = () => {
     setActiveVariant(resolvedVariant);
   }, [selectedVariants, product, lastSelectedType, variantGroups]);
 
-  // Resolve category id for "Explore More" links using public categories
+  // Resolve category id/brand id for "Explore More" links
   useEffect(() => {
     let mounted = true;
-    const resolveCategoryId = async () => {
-      if (!product?.category) return;
+    const resolveIds = async () => {
+      if (!product) return;
       try {
-        const categories = await publicCategoryService.getAllCategories();
-        const matched = categories.find(
-          (c) => c.name.toLowerCase().trim() === product.category.toLowerCase().trim()
-        );
-        if (mounted) setCategoryId(matched?._id || "");
+        // Resolve Category ID
+        if (product.category) {
+          const categories = await publicCategoryService.getAllCategories();
+          const matchedCat = categories.find(
+            (c) => c.name.toLowerCase().trim() === product.category.toLowerCase().trim()
+          );
+          if (mounted) setCategoryId(matchedCat?._id || "");
+        }
+
+        // Resolve Brand ID
+        if (product.brand) {
+          const brands = await publicBrandService.getAllBrands();
+          const matchedBrand = brands.find(
+            (b) => b.name.toLowerCase().trim() === product.brand.toLowerCase().trim()
+          );
+          if (mounted) setBrandId(matchedBrand?._id || "");
+        }
       } catch (err) {
-        console.error("Failed to resolve category id:", err);
+        console.error("Failed to resolve ids:", err);
       }
     };
 
-    resolveCategoryId();
+    resolveIds();
     return () => {
       mounted = false;
     };
@@ -563,7 +577,13 @@ const Product = () => {
                 <p 
                   className="product-brand-detail" 
                   style={{ cursor: "pointer" }}
-                  onClick={() => navigate(`/search?brand=${encodeURIComponent(product.brand)}`)}
+                  onClick={() => {
+                    if (brandId) {
+                      navigate(`/brand/${brandId}`);
+                    } else {
+                      navigate(`/search?brand=${encodeURIComponent(product.brand)}`);
+                    }
+                  }}
                 >
                   {product.brand}
                 </p>
@@ -663,7 +683,13 @@ const Product = () => {
                   <strong>Category:</strong>{" "}
                   <span 
                     style={{ cursor: "pointer", color: "#007185" }} 
-                    onClick={() => navigate(`/search?category=${encodeURIComponent(product.category)}`)}
+                    onClick={() => {
+                      if (categoryId) {
+                        navigate(`/category/${categoryId}`);
+                      } else {
+                        navigate(`/search?category=${encodeURIComponent(product.category)}`);
+                      }
+                    }}
                   >
                     {product.category}
                   </span>

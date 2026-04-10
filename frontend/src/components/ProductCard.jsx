@@ -3,11 +3,46 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addCart as apiAddCart } from "../pages/action";
 import toast from "react-hot-toast";
+import * as publicBrandService from "../service/publicBrandService";
 import "../styles/Products.css";
+
+// Shared cache to avoid redundant API calls across multiple ProductCards
+let brandsCache = null;
+let brandsPromise = null;
+
+const getBrandsCached = () => {
+  if (brandsCache) return Promise.resolve(brandsCache);
+  if (brandsPromise) return brandsPromise;
+  
+  brandsPromise = publicBrandService.getAllBrands()
+    .then(brands => {
+      brandsCache = brands;
+      return brands;
+    })
+    .catch(err => {
+      console.error("Failed to pre-fetch brands:", err);
+      brandsPromise = null;
+      return [];
+    });
+  
+  return brandsPromise;
+};
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [brandId, setBrandId] = React.useState(null);
+
+  React.useEffect(() => {
+    if (product.brand) {
+      getBrandsCached().then(brands => {
+        const matched = brands.find(
+          b => b.name.toLowerCase().trim() === product.brand.toLowerCase().trim()
+        );
+        if (matched) setBrandId(matched._id);
+      });
+    }
+  }, [product.brand]);
 
   const addProduct = (product) => {
     const userId = (() => {
@@ -114,7 +149,11 @@ const ProductCard = ({ product }) => {
             style={{ cursor: "pointer" }}
             onClick={(e) => {
               e.preventDefault();
-              navigate(`/search?brand=${encodeURIComponent(product.brand)}`);
+              if (brandId) {
+                navigate(`/brand/${brandId}`);
+              } else {
+                navigate(`/search?brand=${encodeURIComponent(product.brand)}`);
+              }
             }}
           >
             {product.brand}

@@ -1,0 +1,262 @@
+/* PAGE */
+.contact-page {
+  padding: 40px 20px;
+  min-height: 80vh;
+}
+
+/* TITLE */
+.contact-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.contact-divider {
+  width: 80px;
+  height: 2px;
+  background: #000;
+  margin: 12px auto 40px;
+  border-radius: 2px;
+}
+
+/* FORM WRAPPER */
+.contact-form-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* FIELD GROUP */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* INPUTS */
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #000;
+}
+
+/* ERROR */
+.error {
+  font-size: 12px;
+  color: #d9534f;
+  margin-top: 4px;
+}
+
+/* BUTTON */
+.submit-btn {
+  margin-top: 10px;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.submit-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================ */
+
+/* Tablet (481px - 768px) */
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 30px 15px;
+  }
+
+  .contact-title {
+    font-size: 28px;
+  }
+
+  .contact-form-wrapper {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .contact-page {
+    padding: 20px 12px;
+    min-height: 100vh;
+  }
+
+  .contact-title {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .contact-divider {
+    width: 60px;
+    margin: 8px auto 25px;
+  }
+
+  .contact-form-wrapper {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .contact-form {
+    gap: 14px;
+  }
+
+  .form-group {
+    gap: 3px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .error {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .submit-btn {
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 8px;
+    border-radius: 20px;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* Mobile Small (412px) */
+@media (max-width: 412px) {
+  .contact-page {
+    padding: 15px 10px;
+    min-height: 100vh;
+    background: #f9f9f9;
+  }
+
+  .contact-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .contact-divider {
+    width: 50px;
+    margin: 6px auto 20px;
+  }
+
+  .contact-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .contact-form-wrapper {
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-top: 15px;
+  }
+
+  .contact-form {
+    gap: 10px;
+  }
+
+  .form-group {
+    gap: 2px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .error-text {
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  .submit-btn {
+    padding: 8px;
+    font-size: 11px;
+    margin-top: 6px;
+    border-radius: 18px;
+    width: 100%;
+  }
+
+  .submit-btn:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,24 @@
+/* Category Products Page
+   Uses shared layout/styles from `frontend/src/styles/Products.css`.
+   Keep this file limited to category-specific empty states. */
+
+.category-products-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.category-products-state p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .category-products-state {
+    padding: 40px 16px;
+  }
+
+  .category-products-state p {
+    font-size: 16px;
+  }
+}

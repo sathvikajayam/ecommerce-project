@@ -1,0 +1,292 @@
+/* Profile Page */
+.profile-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Profile Header Section */
+.profile-header-section {
+  background: linear-gradient(135deg, #232F3E 0%, #131A22 100%);
+  padding: 40px 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #fff;
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+}
+
+.profile-avatar i {
+  font-size: 80px;
+  color: #FF9900;
+}
+
+.profile-header-info {
+  flex: 1;
+}
+
+.profile-header-info h1 {
+  font-size: 32px;
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+
+.profile-email-display {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0 0 16px 0;
+}
+
+.profile-header-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-success {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: #FF9900;
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #FFC142;
+}
+
+.btn-secondary {
+  background: #666;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: #555;
+}
+
+.btn-danger {
+  background: #f44336;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #d32f2f;
+}
+
+.btn-success {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background: #45a049;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 40px;
+}
+
+/* Profile Form (Edit Mode) */
+.profile-form {
+  max-width: 600px;
+}
+
+.profile-form h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 0 0 24px 0;
+  border-bottom: 2px solid #FF9900;
+  padding-bottom: 12px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #FF9900;
+  box-shadow: 0 0 5px rgba(255, 153, 0, 0.3);
+}
+
+.form-group input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.form-actions button {
+  flex: 1;
+}
+
+/* Profile View (Display Mode) */
+.profile-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+.profile-section {
+  padding: 24px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.profile-section h2 {
+  font-size: 18px;
+  color: #333;
+  margin: 0 0 16px 0;
+  border-bottom: 2px solid #FF9900;
+  padding-bottom: 8px;
+}
+
+.profile-field {
+  margin-bottom: 16px;
+}
+
+.profile-field:last-child {
+  margin-bottom: 0;
+}
+
+.profile-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.profile-field p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  word-break: break-word;
+}
+
+.status-active {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-header-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 20px;
+  }
+
+  .profile-header-info h1 {
+    font-size: 24px;
+  }
+
+  .profile-header-actions {
+    justify-content: center;
+  }
+
+  .profile-content {
+    padding: 20px;
+  }
+
+  .profile-view {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-form {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 10px;
+  }
+
+  .profile-header-section {
+    padding: 20px;
+  }
+
+  .profile-avatar i {
+    font-size: 60px;
+  }
+
+  .profile-header-info h1 {
+    font-size: 20px;
+  }
+
+  .profile-header-actions {
+    flex-direction: column;
+  }
+
+  .profile-header-actions button {
+    width: 100%;
+  }
+
+  .profile-content {
+    padding: 16px;
+  }
+
+  .profile-section {
+    padding: 16px;
+  }
+
+  .profile-section h2 {
+    font-size: 16px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

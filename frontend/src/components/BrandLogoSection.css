@@ -1,0 +1,195 @@
+/* Brand Logo Section Styling */
+.brand-logo-section {
+  padding: 40px 20px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.brand-section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #232F3E;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Grid Layout */
+.brand-logo-container.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* Scroll Layout (Horizontal) */
+.brand-logo-container.scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.brand-logo-container.scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.brand-logo-container.scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.brand-logo-container.scroll::-webkit-scrollbar-thumb {
+  background: #FF9900;
+  border-radius: 10px;
+}
+
+.brand-logo-container.scroll::-webkit-scrollbar-thumb:hover {
+  background: #FFC142;
+}
+
+/* Brand Item */
+.brand-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  min-width: 120px;
+  text-align: center;
+}
+
+.brand-logo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(255, 153, 0, 0.15);
+  border-color: #FF9900;
+  background: #fff;
+}
+
+/* Brand Logo Wrapper */
+.brand-logo-wrapper {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.brand-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  width: auto;
+  height: auto;
+}
+
+.brand-logo-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #232F3E;
+  margin: 0;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .brand-logo-section {
+    padding: 30px 15px;
+  }
+
+  .brand-section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .brand-logo-container.grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
+  }
+
+  .brand-logo-item {
+    padding: 10px;
+    min-width: 100px;
+  }
+
+  .brand-logo-wrapper {
+    height: 75px;
+  }
+
+  .brand-logo-name {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo-container.grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+  }
+
+  .brand-logo-item {
+    padding: 8px;
+    min-width: 85px;
+  }
+
+  .brand-logo-wrapper {
+    height: 70px;
+  }
+
+  .brand-logo-name {
+    font-size: 10px;
+  }
+}
+
+/* Mobile Small (412px) */
+@media (max-width: 412px) {
+  .brand-logo-section {
+    padding: 20px 12px;
+  }
+
+  .brand-section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .brand-logo-container.grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 0;
+  }
+
+  .brand-logo-container.scroll {
+    gap: 10px;
+    padding: 8px 0;
+  }
+
+  .brand-logo-item {
+    padding: 6px;
+    min-width: 80px;
+  }
+
+  .brand-logo-wrapper {
+    height: 60px;
+  }
+
+  .brand-logo-name {
+    font-size: 9px;
+  }
+}

@@ -1,0 +1,24 @@
+/* Brand Products Page
+   Uses shared layout/styles from `frontend/src/styles/Products.css`.
+   Keep this file limited to brand-specific empty/error states. */
+
+.brand-products-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.brand-products-state p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .brand-products-state {
+    padding: 40px 16px;
+  }
+
+  .brand-products-state p {
+    font-size: 16px;
+  }
+}

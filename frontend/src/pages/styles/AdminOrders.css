@@ -1,0 +1,28 @@
+/* Admin Orders CSS */
+.admin-orders {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-orders h1 {
+  color: #333;
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.coming-soon {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .admin-orders h1 {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,996 @@
+/* Admin Brands CSS */
+.admin-brands {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.brands-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.brands-header h1 {
+  color: #333;
+  font-weight: bold;
+  font-size: 28px;
+  margin: 0;
+  flex: 1;
+}
+
+.header-actions {
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+.brands-header .btn {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+  width: fit-content;
+  white-space: nowrap;
+  margin-left: 20px;
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+.brands-header .btn:hover {
+  background-color: #45a049;
+}
+
+.btn-add-admin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 22px !important;
+  font-size: 16px !important;
+  font-weight: 700;
+  border-radius: 10px !important;
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.2);
+}
+
+.btn-add-admin:hover {
+  background: #1d4ed8 !important;
+}
+
+/* Search */
+/* Search Toolbar (Products Style) */
+.brands-search-toolbar {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toolbar-main-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.toolbar-search {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.toolbar-search-input {
+  width: 100%;
+  padding: 10px 14px 10px 45px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  background: #fff;
+}
+
+.toolbar-search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.toolbar-filter {
+  min-width: 180px;
+}
+
+.status-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #10b981; /* Keep the green border as requested previously */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 41px; /* Match height of search input roughly */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.status-select:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.brands-table {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.brands-table table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+}
+
+.brands-table thead {
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+.brands-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+.brands-table th:nth-child(1) {
+  width: 12%;
+}
+
+.brands-table th:nth-child(2) {
+  width: 10%;
+  text-align: center;
+}
+
+.brands-table th:nth-child(3) {
+  width: 23%;
+}
+
+.brands-table th:nth-child(4) {
+  width: 12%;
+  text-align: center;
+}
+
+.brands-table th:nth-child(5) {
+  width: 15%;
+  text-align: center;
+}
+
+.brands-table th:nth-child(6) {
+  width: 12%;
+  text-align: center;
+}
+
+.brands-table th:nth-child(7) {
+  width: 16%;
+}
+
+.brands-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.brands-table td:nth-child(4),
+.brands-table td:nth-child(5),
+.brands-table td:nth-child(6) {
+  text-align: center;
+}
+
+/* Logo cell styling */
+.logo-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px 15px !important;
+}
+
+.brand-logo-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.brand-logo-thumbnail:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.no-logo {
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Brand Name Cell */
+.brand-name {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Product Count */
+.product-count {
+  text-align: center;
+}
+
+.product-count .badge,
+.category-count .badge {
+  display: inline-block;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+.badge-primary {
+  background-color: #667eea;
+}
+
+.badge-secondary {
+  background-color: #ff9800;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Action Buttons */
+.btn-inactive {
+  background: transparent !important;
+  color: #ff9800;
+}
+
+.btn-inactive:hover {
+  background: transparent !important;
+  color: #e68900;
+}
+
+.btn-active {
+  background: transparent !important;
+  color: #4caf50;
+}
+
+.btn-active:hover {
+  background: transparent !important;
+  color: #45a049;
+}
+
+/* Hover Effect */
+.brands-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  min-width: max-content;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 11px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  min-width: fit-content;
+  justify-content: center;
+}
+
+.icon-action-btn {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0;
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+.icon-action-btn i {
+  font-size: 14px;
+}
+
+.btn-edit i {
+  display: inline-block;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: inherit;
+}
+
+.btn-edit svg {
+  display: block;
+  opacity: 1 !important;
+  visibility: visible !important;
+  stroke: currentColor;
+}
+
+.btn-edit {
+  background: transparent !important;
+  color: #2196f3;
+}
+
+.btn-edit:hover {
+  background: transparent !important;
+  color: #0b7dda;
+}
+
+.btn-delete {
+  background: transparent !important;
+  color: #f44336;
+}
+
+.btn-delete:hover {
+  background: transparent !important;
+  color: #da190b;
+}
+
+/* Brand Links */
+.brands-table a[href^="http"] {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.brands-table a[href^="http"]:hover {
+  text-decoration: underline;
+}
+
+/* No Brands Message */
+.no-brands {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* Brand Name with ID Badge */
+.brand-name-with-id {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-name {
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.brand-id-badge {
+  font-size: 12px;
+  color: #667eea;
+  font-weight: 600;
+  background: #f0f1ff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  display: inline-block;
+}
+
+.clickable-id {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-id:hover {
+  background: #667eea !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+/* Admin Add/Edit Brand Styles */
+.admin-add-brand,
+.admin-edit-brand {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-add-brand h1,
+.admin-edit-brand h1 {
+  color: #333;
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.brand-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+.form-control.is-invalid {
+  border-color: #f44336;
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.3);
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* File Input */
+.file-input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.file-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+/* Image Preview */
+.image-preview {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.image-preview p {
+  margin: 0 0 12px 0;
+  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #45a049;
+}
+
+.btn-secondary {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #616161;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-brands {
+    padding: 10px;
+  }
+
+  .brands-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .brands-header h1 {
+    font-size: 22px;
+  }
+
+  .header-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .header-actions .btn-add-admin {
+    width: 100%;
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
+
+  .brands-table {
+    overflow-x: auto;
+  }
+
+  .brands-table table {
+    min-width: 600px;
+  }
+
+  .brands-table th,
+  .brands-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .brand-logo-thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Hide product and category count on tablet */
+  .brands-table thead th:nth-child(4),
+  .brands-table tbody td:nth-child(4),
+  .brands-table thead th:nth-child(5),
+  .brands-table tbody td:nth-child(5) {
+    display: none;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .btn-small {
+    width: auto;
+    justify-content: center;
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .icon-action-btn {
+    width: 34px;
+    min-width: 34px;
+    margin: 0;
+  }
+
+  .admin-add-brand,
+  .admin-edit-brand {
+    padding: 10px;
+  }
+
+  .brand-form {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    flex: 1;
+  }
+}
+/* Brand Name with ID Badge */
+.brand-name-with-id {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-name {
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.brand-id-badge {
+  font-size: 12px;
+  color: #667eea;
+  font-weight: 600;
+  background: #f0f1ff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  display: inline-block;
+}
+@media (max-width: 480px) {
+  .brands-header h1 {
+    font-size: 20px;
+  }
+
+  .brands-table table {
+    min-width: 500px;
+  }
+
+  .brands-table th,
+  .brands-table td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .brand-logo-thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+
+  .admin-add-brand h1,
+  .admin-edit-brand h1 {
+    font-size: 22px;
+  }
+}
+
+/* ===== Brand View Button ===== */
+.btn-view {
+  background: transparent !important;
+  color: #667eea;
+}
+
+.btn-view:hover {
+  background: transparent !important;
+  color: #5568d3;
+}
+
+/* ===== Brand Details Modal ===== */
+.brand-details-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.brand-details-modal {
+  background: white;
+  border-radius: 8px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.brand-details-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 2px solid #e0e0e0;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand-details-modal .modal-header h2 {
+  margin: 0;
+  color: #222;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.brand-details-modal .close-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.brand-details-modal .close-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.brand-details-modal .modal-content {
+  padding: 24px;
+}
+
+.brand-details-modal .detail-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.brand-details-modal .detail-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.brand-details-modal .section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #667eea;
+}
+
+/* Logo Section */
+.brand-logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+.detail-brand-logo {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: #f9f9f9;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.no-logo-placeholder {
+  width: 200px;
+  height: 140px;
+  background: #f5f5f5;
+  border: 2px dashed #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Detail rows */
+.brand-details-modal .detail-row {
+  display: flex;
+  padding: 12px 0;
+  gap: 16px;
+  align-items: flex-start;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.brand-details-modal .detail-row:last-child {
+  border-bottom: none;
+}
+
+.brand-details-modal .detail-label {
+  font-weight: 600;
+  color: #555;
+  min-width: 140px;
+  font-size: 14px;
+}
+
+.brand-details-modal .detail-value {
+  color: #333;
+  flex: 1;
+  word-break: break-word;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Website link */
+.brand-website-link {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.brand-website-link:hover {
+  text-decoration: underline;
+  color: #0b7dda;
+}
+
+/* Stat badges inside the modal */
+.modal-stat-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modal-stat-purple {
+  background-color: #667eea;
+  color: white;
+}
+
+.modal-stat-orange {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Modal Footer */
+.brand-details-modal .modal-footer {
+  padding: 16px 24px;
+  border-top: 2px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.brand-details-modal .modal-footer .btn {
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  flex: unset;
+}
+
+.brand-details-modal .modal-footer .btn-secondary {
+  background-color: #757575;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.brand-details-modal .modal-footer .btn-secondary:hover {
+  background-color: #616161;
+}
+
+@media (max-width: 600px) {
+  .brand-details-modal {
+    max-width: 100%;
+    margin: 10px;
+    max-height: 95vh;
+  }
+
+  .brand-details-modal .modal-header {
+    padding: 16px;
+  }
+
+  .brand-details-modal .modal-content {
+    padding: 16px;
+  }
+
+  .brand-details-modal .detail-label {
+    min-width: 110px;
+  }
+
+  .detail-brand-logo {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}

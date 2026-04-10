@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* Admin Layout CSS */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #eef2f8;
+  font-family: "Poppins", "Segoe UI", Tahoma, sans-serif;
+}
+
+.admin-main-content {
+  flex: 1;
+  padding: 22px;
+  overflow-y: auto;
+}
+
+.admin-main-content > * {
+  max-width: 1420px;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-main-content {
+    padding: 15px;
+  }
+}

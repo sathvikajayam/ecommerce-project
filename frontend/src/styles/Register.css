@@ -1,0 +1,267 @@
+/* Page Layout */
+.register-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f8;
+  padding: 20px;
+}
+
+/* Card */
+.register-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.register-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* Divider */
+.register-divider {
+  width: 70px;
+  height: 3px;
+  background: #000;
+  margin: 12px auto 25px;
+}
+
+/* Form */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #000;
+}
+
+/* Error */
+.error-text {
+  font-size: 12px;
+  color: #e63946;
+  margin-top: 4px;
+}
+
+/* Login link */
+.login-text {
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-text a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.register-btn {
+  margin-top: 10px;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-btn:hover {
+  background: #222;
+}
+
+.register-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+/* ============================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================ */
+
+/* Tablet (481px - 768px) */
+@media (max-width: 768px) {
+  .register-card {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .register-title {
+    font-size: 22px;
+  }
+
+  .form-group input {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .register-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .register-page {
+    min-height: calc(100vh - 60px);
+    padding: 15px;
+  }
+
+  .register-card {
+    padding: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .register-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .register-divider {
+    width: 50px;
+    margin: 8px auto 15px;
+  }
+
+  .register-form {
+    gap: 12px;
+  }
+
+  .form-group {
+    gap: 4px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .form-group input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .error-text {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .register-btn {
+    padding: 10px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .login-text {
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  .login-text a {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Small (412px) */
+@media (max-width: 412px) {
+  .register-page {
+    min-height: calc(100vh - 60px);
+    padding: 12px;
+    background: #f4f6f8;
+  }
+
+  .register-card {
+    padding: 16px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .register-title {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+
+  .register-divider {
+    width: 40px;
+    height: 2px;
+    margin: 6px auto 12px;
+  }
+
+  .register-form {
+    gap: 10px;
+  }
+
+  .form-group {
+    gap: 3px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .form-group input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .error-text {
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  .register-btn {
+    padding: 8px;
+    font-size: 12px;
+    margin-top: 6px;
+    border-radius: 20px;
+  }
+
+  .login-text {
+    font-size: 11px;
+    margin-top: 10px;
+  }
+
+  .login-text a {
+    font-size: 11px;
+  }
+}

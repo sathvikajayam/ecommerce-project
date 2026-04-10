@@ -1,0 +1,120 @@
+/* Admin Contact Forms CSS */
+.admin-contact-forms {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-forms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.contact-forms-header h1 {
+  color: #333;
+  font-weight: bold;
+  font-size: 28px;
+  margin: 0;
+}
+
+.total-contacts {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  background: #f5f5f5;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+.contact-forms-table {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.contact-forms-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-forms-table thead {
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+.contact-forms-table th {
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-forms-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.contact-forms-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.message-cell {
+  max-width: 450px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.no-contacts {
+  text-align: center;
+  padding: 30px 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .contact-forms-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contact-forms-header h1 {
+    font-size: 22px;
+  }
+
+  .contact-forms-table {
+    overflow-x: auto;
+  }
+
+  .contact-forms-table table {
+    min-width: 700px;
+  }
+
+  .contact-forms-table th,
+  .contact-forms-table td {
+    padding: 10px;
+    font-size: 12px;
+  }
+}

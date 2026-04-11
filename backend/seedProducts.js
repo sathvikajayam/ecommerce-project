@@ -1,8 +1,8 @@
 import axios from "axios";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Product from "./models/Product.js";
 import { formatId, getNextSequence } from "./utils/idGenerator.js";
+import connectDB from "./config/db.js";
 
 dotenv.config();
 
@@ -21,8 +21,7 @@ const getRandomBrand = (category) => {
 
 const seedProducts = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("MongoDB Connected");
+    await connectDB();
 
     const { data } = await axios.get("https://fakestoreapi.com/products");
     console.log(`Fetched ${data.length} products from FakeStore API`);
@@ -69,4 +68,3 @@ const seedProducts = async () => {
 };
 
 seedProducts();
-

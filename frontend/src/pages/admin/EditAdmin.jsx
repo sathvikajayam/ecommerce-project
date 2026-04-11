@@ -122,7 +122,7 @@ const EditAdmin = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form className="admin-form">
             <div className="form-group">
               <label htmlFor="name">Name *</label>
@@ -168,6 +168,17 @@ const EditAdmin = () => {
                 id="role"
                 name="role"
                 className="form-control"
+                onChange={(e) => {
+                  const role = e.target.value;
+                  setFieldValue("role", role);
+                  if (role === "super_admin") {
+                    resources.forEach((resource) => {
+                      actions.forEach((action) => {
+                        setFieldValue(`${resource}_${action}`, true);
+                      });
+                    });
+                  }
+                }}
               >
                 <option value="super_admin">Super Admin</option>
                 <option value="admin">Admin</option>

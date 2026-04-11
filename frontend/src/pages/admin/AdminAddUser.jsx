@@ -75,7 +75,7 @@ const AdminAddUser = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue, values }) => (
           <Form className="admin-form">
             <div className="form-group">
               <label htmlFor="name">Name *</label>
@@ -103,13 +103,35 @@ const AdminAddUser = () => {
 
             <div className="form-group">
               <label htmlFor="role">Role *</label>
-              <Field as="select" id="role" name="role" className="form-control">
+              <Field 
+                as="select" 
+                id="role" 
+                name="role" 
+                className="form-control"
+                onChange={(e) => {
+                  const role = e.target.value;
+                  setFieldValue("role", role);
+                  if (role === "super_admin") {
+                    resources.forEach((resource) => {
+                      actions.forEach((action) => {
+                        setFieldValue(`${resource}_${action}`, true);
+                      });
+                    });
+                  } else {
+                    // Reset permissions when switching back to admin
+                    resources.forEach((resource) => {
+                      actions.forEach((action) => {
+                        setFieldValue(`${resource}_${action}`, false);
+                      });
+                    });
+                  }
+                }}
+              >
                 <option value="super_admin">Super Admin</option>
                 <option value="admin">Admin</option>
               </Field>
               <ErrorMessage name="role" component="div" className="error-message" />
             </div>
-
             {/* Permissions Matrix */}
             <div className="permissions-section">
               <h3>Permissions</h3>

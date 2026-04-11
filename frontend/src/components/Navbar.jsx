@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="navbar-container">
           {/* Logo */}
           <NavLink to="/" className="navbar-logo">
-            React Ecommerce
+            Ecommerce
           </NavLink>
 
           {/* Links */}
@@ -279,6 +279,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-

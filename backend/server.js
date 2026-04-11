@@ -21,12 +21,17 @@ import orderRoutes from "./routes/orderRoutes.js";
 import adminCouponRoutes from "./routes/adminCouponRoutes.js";
 import couponRoutes from "./routes/couponRoutes.js";
 
+import connectDB from "./config/db.js";
+
 // Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config({ path: path.join(__dirname, ".env") });
+
+// Connect to Database
+connectDB();
 
 const app = express();
 
@@ -54,18 +59,12 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/admin/coupons", adminCouponRoutes);
 app.use("/api/coupons", couponRoutes);
 
-// MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.log("❌ MongoDB Error:", err));
-
 // Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
- 
+
 console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
 console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY ? "Loaded ✅" : "Missing ❌");

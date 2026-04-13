@@ -39,7 +39,7 @@ const ResetPassword = () => {
             onSubmit={async (values, { resetForm, setSubmitting }) => {
               try {
                 const response = await axios.post(
-                  `${import.meta.env.VITE_API_URL}/api/users/reset-password/${token}`,
+                  `${process.env.REACT_APP_API_URL}/api/users/reset-password/${token}`,
                   { password: values.password }
                 );
                 toast.success(response?.data?.message || "Password reset successful");

@@ -13,7 +13,7 @@ const TopPicks = () => {
     const fetchTopPicks = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/top-picks`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/homepage/top-picks`);
         
         // Extract the populated active product details
         const products = data

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = `${import.meta.env.VITE_API_URL}/api/products`;
+const API = `${process.env.REACT_APP_API_URL}/api/products`;
 
 export const fetchProducts = () => async (dispatch) => {
   try {

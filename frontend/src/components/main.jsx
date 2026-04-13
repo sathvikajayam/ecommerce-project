@@ -12,7 +12,7 @@ const Main = () => {
 
   const fetchHeroes = useCallback(async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/hero`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/homepage/hero`);
       const liveHeroes = data.filter((h) => h.status === "Live");
       setHeroes(liveHeroes);
       setLoading(false);

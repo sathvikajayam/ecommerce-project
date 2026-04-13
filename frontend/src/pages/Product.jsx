@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import "../styles/Product.css";
 import ImageZoom from "react-image-magnifier-zoom";
 
-const API_BASE = `${import.meta.env.VITE_API_URL}/api`;
+const API_BASE = `${process.env.REACT_APP_API_URL}/api`;
 
 const normalizeVariantType = (value = "") => String(value).trim().toLowerCase();
 

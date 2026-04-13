@@ -38,7 +38,7 @@ const Register = () => {
             initialValues={{ name: "", email: "", phone: "", password: "" }}
             validationSchema={validationSchema}
             onSubmit={(values, { resetForm }) => {
-              axios.post(`${import.meta.env.VITE_API_URL}/api/users/register`, values)
+              axios.post(`${process.env.REACT_APP_API_URL}/api/users/register`, values)
   .then(res => {
     alert("Registered successfully");
     navigate("/login");

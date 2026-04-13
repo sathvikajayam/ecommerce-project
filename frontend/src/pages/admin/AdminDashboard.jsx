@@ -27,10 +27,10 @@ const AdminDashboard = () => {
 
       const [productsRes, usersRes] = await Promise.all([
         canViewProducts
-          ? axios.get(`${import.meta.env.VITE_API_URL}/api/admin/products`, authHeaders)
+          ? axios.get(`${process.env.REACT_APP_API_URL}/api/admin/products`, authHeaders)
           : Promise.resolve({ data: [] }),
         canViewUsers
-          ? axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`, authHeaders)
+          ? axios.get(`${process.env.REACT_APP_API_URL}/api/admin/users`, authHeaders)
           : Promise.resolve({ data: [] }),
       ]);
 

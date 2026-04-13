@@ -34,7 +34,7 @@ const ContactPage = () => {
             initialValues={{ name: "", email: "", phone: "", message: "" }}
             validationSchema={validationSchema}
             onSubmit={(values, { resetForm }) => {
-              axios.post(`${import.meta.env.VITE_API_URL}/api/contacts`, values)
+              axios.post(`${process.env.REACT_APP_API_URL}/api/contacts`, values)
   .then(() => alert("Message sent"));
 
             }}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = `${import.meta.env.VITE_API_URL}/api/cart`;
+const API = `${process.env.REACT_APP_API_URL}/api/cart`;
 
 // Fetch cart
 export const fetchCart = (userId) => async (dispatch) => {

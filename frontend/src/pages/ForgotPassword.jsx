@@ -35,7 +35,7 @@ const ForgotPassword = () => {
             validationSchema={validationSchema}
             onSubmit={async (values, { resetForm, setSubmitting }) => {
               try {
-                const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/forgot-password`, {
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/forgot-password`, {
                   email: values.email,
                 });
                 setSubmittedEmail(values.email);

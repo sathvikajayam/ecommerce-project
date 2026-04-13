@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/products`;
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/products`;
 
 // Get all products (public endpoint with optional pagination)
 export const getAllProducts = async (page = 1, limit = 8) => {

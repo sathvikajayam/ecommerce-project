@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/brands`;
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/brands`;
 
 // Get all brands (public endpoint - includes only active brands with product count)
 export const getAllBrands = async () => {
@@ -58,7 +58,7 @@ export const searchBrands = async (keyword) => {
 // Get homepage featured brands
 export const getHomepageBrands = async () => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/brands`);
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/homepage/brands`);
     return response.data;
   } catch (error) {
     console.error("Failed to fetch homepage brands:", error);

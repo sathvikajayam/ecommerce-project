@@ -157,7 +157,7 @@ const AdminAddProducts = () => {
 
       formData.append("variants", JSON.stringify(variantsData));
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/products`, formData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/products`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           "Content-Type": "multipart/form-data",

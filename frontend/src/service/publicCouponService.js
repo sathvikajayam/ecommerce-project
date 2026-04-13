@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/coupons`;
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/coupons`;
 
 export const listAvailableCoupons = async () => {
   const response = await axios.get(API_BASE_URL);

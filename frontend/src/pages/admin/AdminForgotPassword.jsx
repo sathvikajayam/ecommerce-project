@@ -29,7 +29,7 @@ const AdminForgotPassword = () => {
           onSubmit={async (values, { resetForm, setSubmitting }) => {
             try {
               const response = await axios.post(
-                "http://localhost:5000/api/admin/users/forgot-password",
+                `${import.meta.env.VITE_API_URL}/api/admin/users/forgot-password`,
                 { email: values.email }
               );
               toast.success(response?.data?.message || "Admin reset email sent");

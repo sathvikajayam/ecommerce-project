@@ -5,7 +5,7 @@
 
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/admin/users";
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/admin/users`;
 
 // Permission resources and actions
 export const RESOURCES = ["products", "brands", "categories", "users", "admin"];

@@ -316,7 +316,7 @@ const AdminHomepage = () => {
   const fetchHeroes = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("http://localhost:5000/api/homepage/hero");
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/hero`);
       setHeroImages(data);
     } catch (error) {
       console.error("Failed to fetch hero images:", error);
@@ -338,11 +338,11 @@ const AdminHomepage = () => {
       ] = await Promise.all([
         brandService.getAllBrands(),
         categoryService.getAllCategories(),
-        axios.get("http://localhost:5000/api/homepage/brands"),
-        axios.get("http://localhost:5000/api/homepage/categories"),
-        axios.get("http://localhost:5000/api/homepage/top-picks"),
-        axios.get("http://localhost:5000/api/products?limit=1000"),
-        axios.get("http://localhost:5000/api/homepage/sections")
+        axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/brands`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/categories`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/top-picks`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/products?limit=1000`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/sections`)
       ]);
       setAllBrands(brands);
       setAllCategories(categoryList);
@@ -585,7 +585,7 @@ const AdminHomepage = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/homepage/sections",
+        `${import.meta.env.VITE_API_URL}/api/homepage/sections`,
         payload,
         config
       );
@@ -633,7 +633,7 @@ const AdminHomepage = () => {
           .filter(Boolean);
       }
       const { data } = await axios.put(
-        `http://localhost:5000/api/homepage/sections/${section._id}`,
+        `${import.meta.env.VITE_API_URL}/api/homepage/sections/${section._id}`,
         payload,
         config
       );
@@ -659,7 +659,7 @@ const AdminHomepage = () => {
         },
       };
       await axios.delete(
-        `http://localhost:5000/api/homepage/sections/${sectionId}`,
+        `${import.meta.env.VITE_API_URL}/api/homepage/sections/${sectionId}`,
         config
       );
       setHomepageSections((prev) => prev.filter((section) => section._id !== sectionId));
@@ -706,7 +706,7 @@ const AdminHomepage = () => {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       };
-      await axios.post("http://localhost:5000/api/homepage/brands", { layout: homepageLayout }, config);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/homepage/brands`, { layout: homepageLayout }, config);
       alert("Homepage brand layout saved successfully!");
     } catch (error) {
       console.error("Failed to save layout:", error);
@@ -724,7 +724,7 @@ const AdminHomepage = () => {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       };
-      await axios.post("http://localhost:5000/api/homepage/categories", { layout: homepageCategoryLayout }, config);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/homepage/categories`, { layout: homepageCategoryLayout }, config);
       alert("Homepage category layout saved successfully!");
     } catch (error) {
       console.error("Failed to save category layout:", error);
@@ -742,7 +742,7 @@ const AdminHomepage = () => {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       };
-      await axios.post("http://localhost:5000/api/homepage/top-picks", { layout: topPicksLayout }, config);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/homepage/top-picks`, { layout: topPicksLayout }, config);
       alert("Top Picks layout saved successfully!");
     } catch (error) {
       console.error("Failed to save top picks layout:", error);
@@ -799,11 +799,11 @@ const AdminHomepage = () => {
       };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/homepage/hero/${editingId}`, formData, config);
+        await axios.put(`${import.meta.env.VITE_API_URL}/api/homepage/hero/${editingId}`, formData, config);
         alert("Hero image updated successfully!");
         setShowEditModal(false);
       } else {
-        await axios.post("http://localhost:5000/api/homepage/hero", formData, config);
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/homepage/hero`, formData, config);
         alert("Hero image uploaded successfully!");
       }
 
@@ -834,7 +834,7 @@ const AdminHomepage = () => {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       };
-      await axios.put(`http://localhost:5000/api/homepage/hero/${id}`, { displayOrder: newOrder }, config);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/homepage/hero/${id}`, { displayOrder: newOrder }, config);
       // Update local state for immediate feedback
       setHeroImages(prev => prev.map(h => h._id === id ? { ...h, displayOrder: newOrder } : h));
     } catch (error) {
@@ -851,7 +851,7 @@ const AdminHomepage = () => {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       };
-      await axios.delete(`http://localhost:5000/api/homepage/hero/${id}`, config);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/homepage/hero/${id}`, config);
       alert("Hero image deleted");
       fetchHeroes();
     } catch (error) {
@@ -868,7 +868,7 @@ const AdminHomepage = () => {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       };
-      await axios.put(`http://localhost:5000/api/homepage/hero/${id}`, { status: newStatus }, config);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/homepage/hero/${id}`, { status: newStatus }, config);
       fetchHeroes();
     } catch (error) {
       console.error("Status update failed:", error);

@@ -28,7 +28,7 @@ const EditAdmin = () => {
   const fetchAdmin = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/admin/users/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/users/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
@@ -70,7 +70,7 @@ const EditAdmin = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/api/admin/users/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/users/${id}`,
         payload,
         {
           headers: {

@@ -37,7 +37,7 @@ const AdminProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/products", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/products`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
@@ -68,7 +68,7 @@ const AdminProducts = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/categories", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/categories`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
@@ -85,7 +85,7 @@ const AdminProducts = () => {
 
   const fetchBrands = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/brands", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/brands`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
@@ -103,7 +103,7 @@ const AdminProducts = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/products/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/products/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           },

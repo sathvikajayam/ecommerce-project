@@ -68,7 +68,7 @@ const SearchScreen = () => {
         page: String(pageRef.current),
         limit: "8",
       });
-      const url = `http://localhost:5000/api/products/search?${params.toString()}`;
+      const url = `${import.meta.env.VITE_API_URL}/api/products/search?${params.toString()}`;
       const { data } = await axios.get(url);
       
       const fetchedProducts = data.products || [];

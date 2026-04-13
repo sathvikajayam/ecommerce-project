@@ -214,7 +214,7 @@ const HomepageSections = () => {
     const fetchSections = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get("http://localhost:5000/api/homepage/sections");
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/sections`);
         if (Array.isArray(data)) {
           const liveSections = data
             .filter((section) => section.status !== "Hidden")

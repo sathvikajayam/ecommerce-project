@@ -19,7 +19,7 @@ const AdminAdmins = () => {
 
   const fetchAdmins = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/users", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
@@ -35,7 +35,7 @@ const AdminAdmins = () => {
   const handleDeleteAdmin = async (userId) => {
     if (window.confirm("Are you sure you want to delete this admin?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           },

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/categories";
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/categories`;
 
 // Get all categories (public endpoint - includes only active categories with product count)
 export const getAllCategories = async () => {
@@ -41,7 +41,7 @@ export const searchCategories = async (keyword) => {
 // Get homepage featured categories
 export const getHomepageCategories = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/homepage/categories");
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/homepage/categories`);
     return response.data;
   } catch (error) {
     console.error("Failed to fetch homepage categories:", error);

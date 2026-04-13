@@ -39,7 +39,7 @@ const AdminAddUser = () => {
         createdAt: new Date().toISOString(),
       };
 
-      await axios.post("http://localhost:5000/api/admin/users", payload, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/users`, payload, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           "Content-Type": "application/json",

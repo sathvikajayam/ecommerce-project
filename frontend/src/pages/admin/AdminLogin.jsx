@@ -31,7 +31,7 @@ const AdminLogin = () => {
                         validationSchema={validationSchema}
                         onSubmit={(values, { resetForm, setFieldError }) => {
                             axios
-                                .post("http://localhost:5000/api/users/login", values)
+                                .post(`${import.meta.env.VITE_API_URL}/api/users/login`, values)
                                 .then((res) => {
                                     if (res.data.user.isAdmin) {
                                         localStorage.setItem("adminUser", JSON.stringify(res.data.user));

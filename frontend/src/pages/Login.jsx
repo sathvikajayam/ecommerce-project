@@ -35,7 +35,7 @@ const Login = () => {
             validationSchema={validationSchema}
             onSubmit={(values, { resetForm, setFieldError }) => {
   axios
-    .post("http://localhost:5000/api/users/login", values)
+    .post(`${import.meta.env.VITE_API_URL}/api/users/login`, values)
     .then((res) => {
       localStorage.setItem("user", JSON.stringify(res.data.user));
       // Keep a simple userId key too since other pages (Cart/Checkout) rely on it.

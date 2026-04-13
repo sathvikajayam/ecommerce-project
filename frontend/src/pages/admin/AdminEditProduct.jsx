@@ -48,7 +48,7 @@ const AdminEditProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/admin/products/${id}`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/products/${id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
         });
         setProduct(response.data);
@@ -197,7 +197,7 @@ const AdminEditProduct = () => {
 
       formData.append("variants", JSON.stringify(variantsData));
 
-      await axios.put(`http://localhost:5000/api/admin/products/${id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/admin/products/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           "Content-Type": "multipart/form-data",

@@ -107,6 +107,8 @@ const Checkout = () => {
       };
     });
 
+    const shipping = 30;
+
     const orderPayload = {
       customer: {
         name: values.fullName,
@@ -122,7 +124,8 @@ const Checkout = () => {
         pincode: values.pincode
       },
       subtotal,
-      total: subtotal, // Send total BEFORE discount; backend applies coupon if present
+      shipping,
+      total: subtotal + shipping, // Send total including shipping; backend applies coupon if present
       paymentMethod: values.paymentMethod,
       couponCode: appliedCoupean?.code || null,
       userId: userId || null
@@ -391,7 +394,7 @@ const Checkout = () => {
             <h3 className="summary-title">Order Summary</h3>
             <div className="summary-details">
               <div className="summary-row">
-                <span>Subtotal</span>
+                <span>Subtotal (before discount)</span>
                 <span>₹{Math.round(subtotal).toFixed(2)}</span>
               </div>
               {discountAmount > 0 ? (
@@ -400,9 +403,13 @@ const Checkout = () => {
                   <span>-₹{discountAmount.toFixed(2)}</span>
                 </div>
               ) : null}
+              <div className="summary-row">
+                <span>Shipping</span>
+                <span>₹30.00</span>
+              </div>
               <div className="summary-row total">
-                <strong>Total</strong>
-                <strong>₹{Math.max(Math.round(subtotal) - discountAmount, 0).toFixed(2)}</strong>
+                <strong>Amount Payable</strong>
+                <strong>₹{Math.max(Math.round(subtotal) - discountAmount + 30, 0).toFixed(2)}</strong>
               </div>
             </div>
             <div className="summary-actions">

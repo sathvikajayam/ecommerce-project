@@ -104,6 +104,8 @@ const AdminHomepage = () => {
   const [newSectionProducts, setNewSectionProducts] = useState([""]);
   const [newSectionCategories, setNewSectionCategories] = useState([""]);
   const [newSectionBrands, setNewSectionBrands] = useState([""]);
+  const [newSectionCategorySearch, setNewSectionCategorySearch] = useState("");
+  const [newSectionBrandSearch, setNewSectionBrandSearch] = useState("");
   const [isAddingSection, setIsAddingSection] = useState(false);
   const [sectionSavingId, setSectionSavingId] = useState(null);
   const [sectionDeletingId, setSectionDeletingId] = useState(null);
@@ -122,6 +124,8 @@ const AdminHomepage = () => {
     setNewSectionDiscountType("percentage");
     setNewSectionMinDiscount("");
     setNewSectionMaxDiscount("");
+    setNewSectionCategorySearch("");
+    setNewSectionBrandSearch("");
     setNewSectionProducts([""]);
     setNewSectionCategories([""]);
     setNewSectionBrands([""]);
@@ -222,6 +226,22 @@ const AdminHomepage = () => {
       .map(normalizeFilterValue);
     return Array.from(new Set(names));
   }, [allBrands, newSectionBrandFilterIds]);
+
+  const filteredCategories = useMemo(() => {
+    const term = newSectionCategorySearch.trim().toLowerCase();
+    if (!term) return allCategories;
+    return allCategories.filter((category) =>
+      String(category.name || "").toLowerCase().includes(term)
+    );
+  }, [allCategories, newSectionCategorySearch]);
+
+  const filteredBrands = useMemo(() => {
+    const term = newSectionBrandSearch.trim().toLowerCase();
+    if (!term) return allBrands;
+    return allBrands.filter((brand) =>
+      String(brand.name || "").toLowerCase().includes(term)
+    );
+  }, [allBrands, newSectionBrandSearch]);
 
   const filteredProductsForNewSection = useMemo(() => {
     if (!Array.isArray(allProducts) || allProducts.length === 0) return [];
@@ -1491,37 +1511,59 @@ const AdminHomepage = () => {
 
             {newSectionType === "products" && (
               <>
-                <div className="form-group-homepage">
-                  <label>Categories (Filter)</label>
-                  <select
-                    className="form-input-homepage form-input-homepage--multiselect"
-                    multiple
-                    value={newSectionCategoryFilterIds}
-                    onChange={handleNewSectionCategoryFiltersChange}
-                  >
-                    {allCategories.map((category) => (
-                      <option key={category._id} value={category._id}>
-                        {category.name}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="field-hint">Hold Ctrl to select multiple categories.</div>
-                </div>
-                <div className="form-group-homepage">
-                  <label>Brands (Filter)</label>
-                  <select
-                    className="form-input-homepage form-input-homepage--multiselect"
-                    multiple
-                    value={newSectionBrandFilterIds}
-                    onChange={handleNewSectionBrandFiltersChange}
-                  >
-                    {allBrands.map((brand) => (
-                      <option key={brand._id} value={brand._id}>
-                        {brand.name}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="field-hint">Hold Ctrl to select multiple brands.</div>
+                <div className="section-filter-row">
+                  <div className="form-group-homepage">
+                    <div className="filter-label-row">
+                      <label>Categories (Filter)</label>
+                      <input
+                        type="search"
+                        className="filter-search-input"
+                        placeholder="Search categories"
+                        value={newSectionCategorySearch}
+                        onChange={(e) => setNewSectionCategorySearch(e.target.value)}
+                      />
+                    </div>
+                    <select
+                      className="form-input-homepage form-input-homepage--multiselect"
+                      multiple
+                      value={newSectionCategoryFilterIds}
+                      onChange={handleNewSectionCategoryFiltersChange}
+                    >
+                      {filteredCategories.map((category) => (
+                        <option key={category._id} value={category._id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="field-hint">Hold Ctrl to select multiple categories.</div>
+                  </div>
+
+                  <div className="form-group-homepage">
+                    <div className="filter-label-row">
+                      <label>Brands (Filter)</label>
+                      <input
+                        type="search"
+                        className="filter-search-input"
+                        placeholder="Search brands"
+                        value={newSectionBrandSearch}
+                        onChange={(e) => setNewSectionBrandSearch(e.target.value)}
+                      />
+                    </div>
+                    <select
+                      className="form-input-homepage form-input-homepage--multiselect"
+                      multiple
+                      value={newSectionBrandFilterIds}
+                      onChange={handleNewSectionBrandFiltersChange}
+                    >
+                      {filteredBrands.map((brand) => (
+                        <option key={brand._id} value={brand._id}>
+                          {brand.name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="field-hint">Hold Ctrl to select multiple brands.</div>
+                  </div>
+
                 </div>
 
                 <div className="discount-filters-row">

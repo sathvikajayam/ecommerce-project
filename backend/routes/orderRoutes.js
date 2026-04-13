@@ -237,6 +237,24 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get a single order by orderId (e.g. #03BA2FF1)
+router.get("/by-order-id/:orderId", async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    if (!orderId) {
+      return res.status(400).json({ success: false, message: "orderId is required" });
+    }
+    const order = await Order.findOne({ orderId: decodeURIComponent(orderId) });
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+    res.status(200).json({ success: true, order });
+  } catch (error) {
+    console.error("Get Order Error:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
 // Get order history for a specific logged-in user
 router.get("/history", async (req, res) => {
   try {

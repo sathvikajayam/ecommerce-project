@@ -297,6 +297,80 @@
   gap: 16px;
 }
 
+.invoice-section {
+  margin-top: 18px;
+}
+
+.invoice-section h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.invoice-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.invoice-preview-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #dc2626;
+}
+
+.invoice-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.invoice-preview-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.invoice-preview-detail {
+  display: block;
+  color: #565959;
+  font-size: 14px;
+}
+
+.invoice-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-action-btn {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  color: #111827;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+}
+
 .order-detail-card {
   border: 1px solid #e5e7eb;
   border-radius: 16px;

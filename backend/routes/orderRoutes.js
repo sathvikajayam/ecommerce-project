@@ -162,7 +162,7 @@ router.post("/", async (req, res) => {
       subtotal: Number(subtotal) || 0,
       couponCode: redeemedCouponCode,
       discountAmount,
-      total: Math.max((Number(total) || 0) - discountAmount, 0),
+      total: Number(total) || 0,
       date: new Date(),
       orderStatus: "Pending", // Matches schema field name
       paymentStatus: "Pending",

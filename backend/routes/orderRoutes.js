@@ -198,6 +198,7 @@ router.post("/", async (req, res) => {
     // Send order confirmation email
     if (customer?.email) {
       try {
+        console.log("📧 Attempting to send order email to:", customer.email);
         await sendOrderPlacedEmail({
           to: customer.email,
           customerName: customer.name,
@@ -206,8 +207,10 @@ router.post("/", async (req, res) => {
           total: orderData.total,
           shippingAddress: shippingAddress,
         });
+        console.log("✅ Order email sent successfully to:", customer.email);
       } catch (emailError) {
-        console.error("Order Email Error:", emailError);
+        console.error("❌ Order Email Error:", emailError.message);
+        console.error("Email Config - Host:", process.env.SMTP_HOST, "User:", process.env.SMTP_USER);
         // We don't want to fail the request if email fails
       }
     }

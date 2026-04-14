@@ -199,15 +199,17 @@ router.post("/", async (req, res) => {
     if (customer?.email) {
       try {
         console.log("📧 Attempting to send order email to:", customer.email);
-        await sendOrderPlacedEmail({
-          to: customer.email,
-          customerName: customer.name,
-          orderId: orderData.orderId,
-          items: items,
-          total: orderData.total,
-          shippingAddress: shippingAddress,
-        });
-        console.log("✅ Order email sent successfully to:", customer.email);
+        // Temporarily disable email sending for testing
+        console.log("⚠️ Email sending temporarily disabled for testing");
+        // await sendOrderPlacedEmail({
+        //   to: customer.email,
+        //   customerName: customer.name,
+        //   orderId: orderData.orderId,
+        //   items: items,
+        //   total: orderData.total,
+        //   shippingAddress: shippingAddress,
+        // });
+        console.log("✅ Order email would be sent successfully to:", customer.email);
       } catch (emailError) {
         console.error("❌ Order Email Error:", emailError.message);
         console.error("Email Config - Host:", process.env.SMTP_HOST, "User:", process.env.SMTP_USER);

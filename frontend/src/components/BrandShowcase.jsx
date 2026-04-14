@@ -37,8 +37,8 @@ const BrandShowcase = () => {
   }, []);
 
   const handleBrandClick = (brand) => {
-    // Navigate to dedicated brand products page
-    navigate(`/brand/${brand._id}`);
+    // Navigate to search page with brand selected
+    navigate(`/search?brand=${encodeURIComponent(brand.name)}`);
   };
 
   const handleExploreMore = () => {

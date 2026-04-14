@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import axios from "axios";
 
 import {
   Home,
@@ -55,6 +56,8 @@ import AdminHomepage from "./pages/admin/AdminHomepage";
 
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

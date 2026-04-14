@@ -35,9 +35,12 @@ connectDB();
 
 const app = express();
 
-// Middleware - CORS configured for production frontend
+// Middleware - CORS configured for local and deployed frontend
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",   // ✅ local frontend
+    "https://ecommerce-project-chi-umber.vercel.app" // ✅ deployed frontend
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]

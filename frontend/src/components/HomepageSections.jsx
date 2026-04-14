@@ -103,8 +103,8 @@ const HomepageSections = () => {
               <div
                 className="homepage-section-category-card"
                 onClick={() => {
-                  if (!category?._id) return;
-                  navigate(`/category/${category._id}`);
+                  if (!category?.name) return;
+                  navigate(`/search?category=${encodeURIComponent(category.name)}`);
                 }}
               >
                 <div className="homepage-section-category-wrapper">
@@ -174,8 +174,8 @@ const HomepageSections = () => {
                 <div 
                   className="homepage-section-brand-card"
                   onClick={() => {
-                    if (!brand?._id) return;
-                    navigate(`/brand/${brand._id}`);
+                    if (!brand?.name) return;
+                    navigate(`/search?brand=${encodeURIComponent(brand.name)}`);
                   }}
                   style={{ cursor: "pointer" }}
                 >

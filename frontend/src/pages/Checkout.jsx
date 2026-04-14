@@ -132,6 +132,8 @@ const Checkout = () => {
     };
 
     try {
+      console.log("axios.defaults.baseURL:", axios.defaults.baseURL);
+      console.log("Making request to:", axios.defaults.baseURL + "/api/orders");
       const { data } = await axios.post("/api/orders", orderPayload);
       if (data.success) {
         toast.success(`Payment successful! Order ID: ${data.orderId}`);

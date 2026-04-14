@@ -58,6 +58,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+console.log("REACT_APP_API_URL:", process.env.REACT_APP_API_URL);
+console.log("axios.defaults.baseURL:", axios.defaults.baseURL);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

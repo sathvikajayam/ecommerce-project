@@ -381,7 +381,7 @@ const Checkout = () => {
                       </div>
                     </div>
                     <div className="order-item-price">
-                      ₹{Math.round(price * item.qty).toFixed(2)}
+                      ₹{(price * item.qty).toFixed(2)}
                     </div>
                   </div>
                 );
@@ -397,7 +397,7 @@ const Checkout = () => {
             <div className="summary-details">
               <div className="summary-row">
                 <span>Subtotal (before discount)</span>
-                <span>₹{Math.round(subtotal).toFixed(2)}</span>
+                <span>₹{subtotal.toFixed(2)}</span>
               </div>
               {discountAmount > 0 ? (
                 <div className="summary-row">
@@ -411,7 +411,7 @@ const Checkout = () => {
               </div>
               <div className="summary-row total">
                 <strong>Amount Payable</strong>
-                <strong>₹{Math.max(Math.round(subtotal) - discountAmount + 30, 0).toFixed(2)}</strong>
+                <strong>₹{Math.max(subtotal - discountAmount + 30, 0).toFixed(2)}</strong>
               </div>
             </div>
             <div className="summary-actions">

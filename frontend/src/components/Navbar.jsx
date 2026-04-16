@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 import "../styles/Navbar.css";
 import SearchBar from "./SearchBar";
 
@@ -10,6 +11,7 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [navbarLogoUrl, setNavbarLogoUrl] = useState("");
 
   // ✅ Check if user is logged in from localStorage
   useEffect(() => {
@@ -29,6 +31,19 @@ const Navbar = () => {
 
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const loadNavbarLogo = async () => {
+      try {
+        const { data } = await axios.get("/api/settings/navbar");
+        setNavbarLogoUrl(data?.navbarLogoUrl || "");
+      } catch (error) {
+        // ignore
+      }
+    };
+
+    loadNavbarLogo();
   }, []);
 
   // ✅ total quantity (supports both array or object-shaped cart)
@@ -52,7 +67,9 @@ const Navbar = () => {
         <div className="navbar-container">
           {/* Logo */}
           <NavLink to="/" className="navbar-logo">
-            Ecommerce
+            {navbarLogoUrl ? (
+              <img src={navbarLogoUrl} alt="Logo" className="navbar-logo-img" />
+            ) : null}
           </NavLink>
 
           {/* Links */}

@@ -1,4 +1,4 @@
-import { Navbar, Main, BrandShowcase, CategoryShowcase, TopPicks, HomepageSections } from "../components";
+import { Navbar, Main, BrandShowcase, CategoryShowcase, TopPicks, HomepageSections, Footer } from "../components";
 
 function Home() {
   return (
@@ -9,6 +9,7 @@ function Home() {
       <CategoryShowcase />
       <TopPicks />
       <HomepageSections />
+      <Footer />
     </>
   );
 }

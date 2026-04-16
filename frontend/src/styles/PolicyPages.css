@@ -1,0 +1,42 @@
+.policy-page {
+  padding: 46px 0 12px;
+  background: #f7f8fb;
+  min-height: 60vh;
+}
+
+.policy-page__inner {
+  width: min(980px, calc(100% - 36px));
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px 26px;
+  box-shadow: 0 14px 35px rgba(2, 6, 23, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.policy-page__title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.policy-page__divider {
+  width: 120px;
+  height: 4px;
+  background: #00d084;
+  border-radius: 999px;
+  margin: 12px 0 18px;
+}
+
+.policy-page__heading {
+  margin: 18px 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.policy-page__text {
+  margin: 0 0 12px;
+  line-height: 1.75;
+  color: rgba(15, 23, 42, 0.82);
+}
+

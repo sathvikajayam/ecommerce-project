@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "../styles/Contact.css";
@@ -106,6 +106,8 @@ const ContactPage = () => {
           </Formik>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 };

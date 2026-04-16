@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import "../styles/AboutPage.css";
 
 const AboutPage = () => {
@@ -56,6 +56,8 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 };

@@ -16,3 +16,4 @@ export { default as HeroGrid } from './HeroGrid';
 export { default as TopPicks } from './TopPicks';
 export { default as HomepageSections } from './HomepageSections';
 export { default as HomepageProductFeed } from './HomepageProductFeed';
+export { default as Footer } from './Footer';

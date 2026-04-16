@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import * as publicBrandService from "../service/publicBrandService";
@@ -99,6 +99,7 @@ const AllBrands = () => {
           <p className="no-brands">No brands found</p>
         )}
       </section>
+      <Footer />
     </>
   );
 };

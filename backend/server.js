@@ -20,6 +20,7 @@ import homepageRoutes from "./routes/homepageRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import adminCouponRoutes from "./routes/adminCouponRoutes.js";
 import couponRoutes from "./routes/couponRoutes.js";
+import settingsRoutes from "./routes/settingsRoutes.js";
 
 import connectDB from "./config/db.js";
 
@@ -66,6 +67,7 @@ app.use("/api/homepage", homepageRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin/coupons", adminCouponRoutes);
 app.use("/api/coupons", couponRoutes);
+app.use("/api/settings", settingsRoutes);
 
 // Server
 const PORT = process.env.PORT || 5000;

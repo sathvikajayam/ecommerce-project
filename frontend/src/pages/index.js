@@ -18,3 +18,6 @@ export { default as PageNotFound } from './PageNotFound';
 export { default as SearchScreen } from './SearchScreen';
 export { default as Profile } from './Profile';
 export { default as OrderHistory } from './OrderHistory';
+export { default as PrivacyPolicy } from './PrivacyPolicy';
+export { default as TermsConditions } from './TermsConditions';
+export { default as ShippingPolicy } from './ShippingPolicy';

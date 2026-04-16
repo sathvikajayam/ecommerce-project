@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -432,6 +432,7 @@ const Checkout = () => {
       <div className="checkout-page-content">
         {cart.items && cart.items.length ? <ShowCheckout /> : <EmptyCart />}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import * as publicCategoryService from "../service/publicCategoryService";
@@ -100,6 +100,7 @@ const AllCategories = () => {
           <p className="no-categories">No categories found</p>
         )}
       </section>
+      <Footer />
     </>
   );
 };

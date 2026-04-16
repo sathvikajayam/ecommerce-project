@@ -28,6 +28,9 @@ import {
   SearchScreen,
   Profile,
   OrderHistory,
+  PrivacyPolicy,
+  TermsConditions,
+  ShippingPolicy,
 } from "./pages";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminForgotPassword from "./pages/admin/AdminForgotPassword";
@@ -53,6 +56,7 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import AdminCoupons from "./pages/admin/AdminCoupons";
 import AdminContactForms from "./pages/admin/AdminContactForms";
 import AdminHomepage from "./pages/admin/AdminHomepage";
+import AdminNavbar from "./pages/admin/AdminNavbar";
 
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
@@ -78,6 +82,9 @@ root.render(
           <Route path="/search/:keyword" element={<SearchScreen />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -252,6 +259,19 @@ root.render(
               element={
                 <AdminPermissionRoute anyOf={[{ resource: "coupons", action: "view" }]}>
                   <AdminCoupons />
+                </AdminPermissionRoute>
+              }
+            />
+            <Route
+              path="navbar"
+              element={
+                <AdminPermissionRoute
+                  anyOf={[
+                    { resource: "homepage", action: "view" },
+                    { resource: "admin", action: "view" },
+                  ]}
+                >
+                  <AdminNavbar />
                 </AdminPermissionRoute>
               }
             />

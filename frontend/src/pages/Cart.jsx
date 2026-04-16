@@ -1,6 +1,6 @@
 // src/pages/Cart.jsx
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { addCart as apiAddCart, delCart as apiDelCart, fetchCart, clearCart as apiClearCart } from "../pages/action";
 import { addCart as localAddCart, delCart as localDelCart, clearCart as localClearCart } from "../redux/action";
@@ -535,6 +535,7 @@ const Cart = () => {
           {cart.items && cart.items.length > 0 ? renderCart() : renderEmptyCart()}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

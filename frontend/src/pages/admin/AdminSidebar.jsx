@@ -30,6 +30,7 @@ const AdminSidebar = () => {
   const canViewAdmins = hasAdminPermission("admin", "view", adminUser);
   const canViewContacts = hasAdminPermission("admin", "view", adminUser);
   const canViewHomepage = hasAdminPermission("homepage", "view", adminUser) || hasAdminPermission("admin", "view", adminUser);
+  const canViewNavbar = canViewHomepage;
   try {
     const storedUser = adminUser || {};
     adminName = storedUser?.name || adminName;
@@ -107,6 +108,13 @@ const AdminSidebar = () => {
           <NavLink to="/admin/admins" className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}>
             <span className="icon"><i className="fa fa-shield" aria-hidden="true" /></span>
             {isOpen && <span>Admins</span>}
+          </NavLink>
+        )}
+
+        {canViewNavbar && (
+          <NavLink to="/admin/navbar" className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}>
+            <span className="icon"><i className="fa fa-bars" aria-hidden="true" /></span>
+            {isOpen && <span>Navbar</span>}
           </NavLink>
         )}
 

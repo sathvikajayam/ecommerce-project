@@ -4,7 +4,7 @@ import { jsPDF } from "jspdf";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 import { addCart as addCartApi } from "./action";
 import { addCart as addCartLocal } from "../redux/action";
 import "../styles/OrderHistory.css";
@@ -462,6 +462,7 @@ const OrderHistory = () => {
     return (
       <div className="order-history-page">
         <Navbar />
+        <Footer />
       </div>
     );
   }
@@ -709,6 +710,8 @@ const OrderHistory = () => {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 };

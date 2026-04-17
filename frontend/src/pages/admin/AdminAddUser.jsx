@@ -8,8 +8,44 @@ import "../styles/AdminAddUser.css";
 const AdminAddUser = () => {
   const navigate = useNavigate();
 
-  const resources = ["products", "brands", "categories", "users", "admin"];
+  const resources = [
+    "products",
+    "brands",
+    "categories",
+    "users",
+    "admin",
+    "coupons",
+    "homepage",
+    "navbar",
+    "orders",
+    "contacts",
+  ];
   const actions = ["view", "create", "edit", "delete"];
+
+  const allowedActionsByResource = {
+    navbar: ["view", "edit"],
+    orders: ["view", "edit"],
+    contacts: ["view"],
+    users: ["view", "delete"],
+  };
+
+  const resourceLabels = {
+    contacts: "Contact Forms",
+    navbar: "Logo",
+  };
+
+  const getResourceLabel = (resource) => {
+    return (
+      resourceLabels[resource] ||
+      `${resource.charAt(0).toUpperCase()}${resource.slice(1)}`
+    );
+  };
+
+  const isActionAllowed = (resource, action) => {
+    const allowed = allowedActionsByResource[resource];
+    if (!allowed) return true;
+    return allowed.includes(action);
+  };
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -25,7 +61,9 @@ const AdminAddUser = () => {
       resources.forEach((resource) => {
         permissions[resource] = {};
         actions.forEach((action) => {
-          permissions[resource][action] = values[`${resource}_${action}`] || false;
+          permissions[resource][action] = isActionAllowed(resource, action)
+            ? (values[`${resource}_${action}`] || false)
+            : false;
         });
       });
 
@@ -114,7 +152,10 @@ const AdminAddUser = () => {
                   if (role === "super_admin") {
                     resources.forEach((resource) => {
                       actions.forEach((action) => {
-                        setFieldValue(`${resource}_${action}`, true);
+                        setFieldValue(
+                          `${resource}_${action}`,
+                          isActionAllowed(resource, action)
+                        );
                       });
                     });
                   } else {
@@ -150,15 +191,19 @@ const AdminAddUser = () => {
                   {resources.map((resource) => (
                     <tr key={resource}>
                       <td className="resource-name">
-                        {resource.charAt(0).toUpperCase() + resource.slice(1)}
+                        {getResourceLabel(resource)}
                       </td>
                       {actions.map((action) => (
                         <td key={action} className="checkbox-cell">
-                          <Field
-                            type="checkbox"
-                            name={`${resource}_${action}`}
-                            id={`${resource}_${action}`}
-                          />
+                          {isActionAllowed(resource, action) ? (
+                            <Field
+                              type="checkbox"
+                              name={`${resource}_${action}`}
+                              id={`${resource}_${action}`}
+                            />
+                          ) : (
+                            <span className="text-muted">—</span>
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -168,7 +213,7 @@ const AdminAddUser = () => {
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="btn btn-success" disabled={isSubmitting}>
+              <button type="submit" className="btn btn-success" style={{ backgroundColor: "#2563eb", borderColor: "#2563eb" }} disabled={isSubmitting}>
                 {isSubmitting ? "Adding..." : "Add Admin"}
               </button>
               <button type="button" className="btn btn-secondary" onClick={() => navigate('/admin/admins')}>

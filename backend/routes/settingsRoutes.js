@@ -13,10 +13,9 @@ router.put(
   "/navbar/logo",
   protect,
   adminOnly,
-  requirePermission("homepage", "edit"),
+  requirePermission("navbar", "edit"),
   upload.single("image"),
   updateNavbarLogo
 );
 
 export default router;
-

@@ -42,7 +42,12 @@ const userSchema = new mongoose.Schema(
       brands: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
       categories: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
       users: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
-      admin: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean }
+      admin: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
+      coupons: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
+      homepage: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
+      navbar: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
+      orders: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
+      contacts: { view: Boolean, create: Boolean, edit: Boolean, delete: Boolean },
     }
   },
   { timestamps: true }

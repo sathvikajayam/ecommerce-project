@@ -12,12 +12,17 @@ This document explains the Admin Management System with Role-Based Access Contro
 - Delete admin users completely
 
 ### 2. **Permission Control**
-Granular permission management across 5 main resources:
+Granular permission management across the main resources:
 - **Products**: View, Create, Edit, Delete
 - **Brands**: View, Create, Edit, Delete
 - **Categories**: View, Create, Edit, Delete
 - **Users**: View, Create, Edit, Delete
 - **Admin**: View, Create, Edit, Delete (for managing other admins)
+- **Coupons**: View, Create, Edit, Delete
+- **Homepage**: View, Create, Edit, Delete
+- **Navbar**: View, Edit
+- **Orders**: View, Edit
+- **Contact Forms**: View
 
 ### 3. **Enhanced Backend Validation**
 - Email format validation

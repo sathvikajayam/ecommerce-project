@@ -87,7 +87,7 @@
 }
 
 .admin-yes {
-  color: #4caf50;
+  color: #2563eb;
   font-weight: 600;
 }
 
@@ -156,12 +156,12 @@
 
 .btn-edit {
   background: transparent !important;
-  color: #667eea;
+  color: #2196f3;
 }
 
 .btn-edit:hover {
   background: transparent !important;
-  color: #5568d3;
+  color: #0b7dda;
 }
 
 .btn-remove-admin {

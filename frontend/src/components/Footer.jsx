@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Footer.css";
 
 const Footer = () => {
+  const [navbarLogoUrl, setNavbarLogoUrl] = useState("");
+
+  useEffect(() => {
+    const loadNavbarLogo = async () => {
+      try {
+        const { data } = await axios.get("/api/settings/navbar");
+        setNavbarLogoUrl(data?.navbarLogoUrl || "");
+      } catch (error) {
+        // ignore
+      }
+    };
+    loadNavbarLogo();
+  }, []);
+
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
@@ -81,7 +96,9 @@ const Footer = () => {
             <span className="site-footer__dot" aria-hidden="true">•</span>
             <Link to="/terms-conditions">Terms &amp; Conditions</Link>
           </div>
-          <div className="site-footer__copy">© 2026 Ecommerce</div>
+          <div className="site-footer__copy">
+            &copy; 2026 {navbarLogoUrl && <img src={navbarLogoUrl} alt="Logo" className="site-footer__logo-img" />}
+          </div>
           <div className="site-footer__bottomRight">
             <span className="site-footer__dev">
               Designed &amp; Developed by{" "}

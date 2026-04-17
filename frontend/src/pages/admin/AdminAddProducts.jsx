@@ -305,7 +305,7 @@ const AdminAddProducts = () => {
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="btn btn-success" disabled={isSubmitting}>{isSubmitting ? "Adding..." : "Add Product"}</button>
+              <button type="submit" className="btn btn-success" style={{ backgroundColor: "#2563eb", borderColor: "#2563eb" }} disabled={isSubmitting}>{isSubmitting ? "Adding..." : "Add Product"}</button>
               <button type="button" className="btn btn-secondary" onClick={() => navigate("/admin/products")}>Cancel</button>
             </div>
           </Form>

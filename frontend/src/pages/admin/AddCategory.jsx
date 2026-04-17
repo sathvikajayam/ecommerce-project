@@ -242,11 +242,7 @@ const AddCategory = () => {
 
             {/* Buttons */}
             <div className="form-actions">
-              <button
-                type="submit"
-                className="btn btn-success"
-                disabled={isSubmitting}
-              >
+              <button type="submit" className="btn btn-success" style={{ backgroundColor: "#2563eb", borderColor: "#2563eb" }} disabled={isSubmitting}>
                 {isSubmitting ? "Adding..." : "Add Category"}
               </button>
 

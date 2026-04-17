@@ -166,6 +166,13 @@
   font-weight: 700;
 }
 
+.site-footer__logo-img {
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 6px;
+  display: inline-block;
+}
+
 @media (max-width: 980px) {
   .site-footer__top {
     grid-template-columns: 1fr 1fr;

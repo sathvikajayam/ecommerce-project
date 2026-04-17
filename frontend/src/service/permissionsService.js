@@ -8,7 +8,18 @@ import axios from "axios";
 const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/admin/users`;
 
 // Permission resources and actions
-export const RESOURCES = ["products", "brands", "categories", "users", "admin"];
+export const RESOURCES = [
+  "products",
+  "brands",
+  "categories",
+  "users",
+  "admin",
+  "coupons",
+  "homepage",
+  "navbar",
+  "orders",
+  "contacts",
+];
 export const ACTIONS = ["view", "create", "edit", "delete"];
 
 /**

@@ -12,7 +12,11 @@ const fullPermissions = {
   categories: { view: true, create: true, edit: true, delete: true },
   users: { view: true, create: true, edit: true, delete: true },
   admin: { view: true, create: true, edit: true, delete: true },
+  coupons: { view: true, create: true, edit: true, delete: true },
   homepage: { view: true, create: true, edit: true, delete: true },
+  navbar: { view: true, create: false, edit: true, delete: false },
+  orders: { view: true, create: false, edit: true, delete: false },
+  contacts: { view: true, create: false, edit: false, delete: false },
 };
 
 const createAdminUser = async () => {

@@ -4,6 +4,9 @@ import Coupon from "../models/Coupon.js";
 import Product from "../models/Product.js";
 import Cart from "../models/Cart.js";
 import { sendOrderPlacedEmail, sendOrderDeliveredEmail } from "../utils/emailService.js";
+import { protect } from "../middleware/authMiddleware.js";
+import { adminOnly } from "../middleware/adminMiddleware.js";
+import { requireAnyPermission, requirePermission } from "../middleware/permissionMiddleware.js";
 
 const router = express.Router();
 
@@ -230,15 +233,21 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get all orders (Admin only - adding basic check here or later with middleware)
-router.get("/", async (req, res) => {
+// Get all orders (Admin only)
+router.get(
+  "/",
+  protect,
+  adminOnly,
+  requireAnyPermission("orders", ["view", "edit"]),
+  async (req, res) => {
   try {
     const orders = await Order.find().sort({ createdAt: -1 });
     res.status(200).json(orders);
   } catch (error) {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
-});
+  }
+);
 
 // Get a single order by orderId (e.g. #03BA2FF1)
 router.get("/by-order-id/:orderId", async (req, res) => {
@@ -298,7 +307,7 @@ router.get("/history", async (req, res) => {
 });
 
 // Update order status and payment status (Admin only)
-router.put("/:id", async (req, res) => {
+router.put("/:id", protect, adminOnly, requirePermission("orders", "edit"), async (req, res) => {
   try {
     const { id } = req.params;
     const { orderStatus, paymentStatus } = req.body;

@@ -1,10 +1,17 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { getStoredAdminUser, hasAdminPermission } from "../../utils/adminPermissions";
 
 const AdminNavbar = () => {
   const [selectedLogo, setSelectedLogo] = useState(null);
   const [currentLogoUrl, setCurrentLogoUrl] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+
+  const adminUser = getStoredAdminUser();
+  const canViewNavbar =
+    hasAdminPermission("navbar", "view", adminUser) ||
+    hasAdminPermission("navbar", "edit", adminUser);
+  const canEditNavbar = hasAdminPermission("navbar", "edit", adminUser);
 
   const previewUrl = useMemo(() => {
     if (!selectedLogo) return "";
@@ -31,12 +38,17 @@ const AdminNavbar = () => {
   }, []);
 
   const handleLogoChange = (event) => {
+    if (!canEditNavbar) return;
     const file = event.target.files?.[0] || null;
     setSelectedLogo(file);
   };
 
   const handleSaveLogo = async (event) => {
     event.preventDefault();
+    if (!canEditNavbar) {
+      alert("You don't have permission to edit the navbar.");
+      return;
+    }
     if (!selectedLogo) {
       alert("Please choose a logo image first.");
       return;
@@ -66,11 +78,15 @@ const AdminNavbar = () => {
 
   return (
     <div className="container-fluid py-3">
-      <h1 className="h4 mb-2">Navbar</h1>
+      <h1 className="h4 mb-2">Logo</h1>
+
+      {!canViewNavbar ? (
+        <p className="text-muted">You don't have permission to view navbar settings.</p>
+      ) : null}
 
       <div className="card mt-3">
         <div className="card-body">
-          <h2 className="h6 mb-3">Navbar Logo</h2>
+          <h2 className="h6 mb-3">Navbar and Footer Logo</h2>
 
           <div className="row g-3 align-items-start">
             <div className="col-12 col-md-6">
@@ -80,13 +96,15 @@ const AdminNavbar = () => {
                 className="form-control"
                 accept="image/*"
                 onChange={handleLogoChange}
+                disabled={!canEditNavbar}
               />
               <div className="form-text">Supported: JPG, PNG, WEBP, GIF</div>
 
               <button
                 className="btn btn-primary mt-3"
+                style={{ backgroundColor: "#2563eb", borderColor: "#2563eb", color: "white" }}
                 onClick={handleSaveLogo}
-                disabled={isSaving || !selectedLogo}
+                disabled={isSaving || !selectedLogo || !canEditNavbar}
               >
                 {isSaving ? "Saving..." : "Save Logo"}
               </button>

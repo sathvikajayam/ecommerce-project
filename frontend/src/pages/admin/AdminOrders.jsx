@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "../../styles/AdminOrders.css";
+import { getStoredAdminUser, hasAdminPermission } from "../../utils/adminPermissions";
 
 const formatDateTime = (value) => {
   const date = value ? new Date(value) : null;
@@ -29,11 +30,25 @@ const AdminOrders = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const adminUser = getStoredAdminUser();
+  const canViewOrders =
+    hasAdminPermission("orders", "view", adminUser) ||
+    hasAdminPermission("orders", "edit", adminUser);
+  const canEditOrders = hasAdminPermission("orders", "edit", adminUser);
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
+        if (!canViewOrders) {
+          setOrders([]);
+          return;
+        }
         setLoading(true);
-        const response = await axios.get("/api/orders");
+        const response = await axios.get("/api/orders", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+          },
+        });
         setOrders(response.data || []);
       } catch (error) {
         // eslint-disable-next-line no-console
@@ -44,7 +59,7 @@ const AdminOrders = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [canViewOrders]);
 
   const handleViewOrder = (order) => {
     setSelectedOrder(order);
@@ -92,6 +107,19 @@ const AdminOrders = () => {
       <div className="admin-orders-container">
         <div className="loading-state">
           <i className="fa fa-spinner fa-spin" /> Loading orders...
+        </div>
+      </div>
+    );
+  }
+
+  if (!canViewOrders) {
+    return (
+      <div className="admin-orders-container">
+        <div className="orders-header">
+          <div className="title-section">
+            <h1>Orders</h1>
+            <p className="subtitle">You don't have permission to view orders.</p>
+          </div>
         </div>
       </div>
     );
@@ -218,13 +246,17 @@ const AdminOrders = () => {
       </div>
 
       {isModalOpen && selectedOrder && (
-        <OrderDetailsModal order={selectedOrder} onClose={closeModal} />
+        <OrderDetailsModal
+          order={selectedOrder}
+          onClose={closeModal}
+          canEdit={canEditOrders}
+        />
       )}
     </div>
   );
 };
 
-const OrderDetailsModal = ({ order, onClose }) => {
+const OrderDetailsModal = ({ order, onClose, canEdit }) => {
   const [editMode, setEditMode] = useState(false);
   const [editedOrder, setEditedOrder] = useState({
     orderStatus: order?.orderStatus || "Pending",
@@ -263,7 +295,11 @@ const OrderDetailsModal = ({ order, onClose }) => {
         orderStatus: editedOrder.orderStatus,
         paymentStatus: editedOrder.paymentStatus,
       };
-      await axios.put(`/api/orders/${order._id}`, payload);
+      await axios.put(`/api/orders/${order._id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+        },
+      });
       setSaveMessage("Order updated successfully!");
       
       // Update the order object with new values
@@ -343,6 +379,8 @@ const OrderDetailsModal = ({ order, onClose }) => {
                 className="order-btn-edit"
                 onClick={() => setEditMode(true)}
                 aria-label="Edit order status"
+                disabled={!canEdit}
+                title={!canEdit ? "You don't have permission to edit orders" : undefined}
               >
                 <i className="fa fa-edit" aria-hidden="true" /> Edit
               </button>

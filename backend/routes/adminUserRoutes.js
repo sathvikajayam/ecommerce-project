@@ -12,7 +12,18 @@ const SUPER_ADMIN_EMAIL = "admin@example.com";
 const ADMIN_ROLES = ["admin", "super_admin"];
 const MIN_ADMIN_PASSWORD_LENGTH = 6;
 
-const RESOURCES = ["products", "brands", "categories", "users", "admin"];
+const RESOURCES = [
+  "products",
+  "brands",
+  "categories",
+  "users",
+  "admin",
+  "coupons",
+  "homepage",
+  "navbar",
+  "orders",
+  "contacts",
+];
 const ACTIONS = ["view", "create", "edit", "delete"];
 
 const can = (user, resource, action) => hasPermission(user, resource, action);
@@ -54,6 +65,11 @@ const defaultPermissions = {
   categories: { view: false, create: false, edit: false, delete: false },
   users: { view: false, create: false, edit: false, delete: false },
   admin: { view: false, create: false, edit: false, delete: false },
+  coupons: { view: false, create: false, edit: false, delete: false },
+  homepage: { view: false, create: false, edit: false, delete: false },
+  navbar: { view: false, create: false, edit: false, delete: false },
+  orders: { view: false, create: false, edit: false, delete: false },
+  contacts: { view: false, create: false, edit: false, delete: false },
 };
 
 const fullPermissions = {
@@ -62,6 +78,11 @@ const fullPermissions = {
   categories: { view: true, create: true, edit: true, delete: true },
   users: { view: true, create: true, edit: true, delete: true },
   admin: { view: true, create: true, edit: true, delete: true },
+  coupons: { view: true, create: true, edit: true, delete: true },
+  homepage: { view: true, create: true, edit: true, delete: true },
+  navbar: { view: true, create: false, edit: true, delete: false },
+  orders: { view: true, create: false, edit: true, delete: false },
+  contacts: { view: true, create: false, edit: false, delete: false },
 };
 
 router.post("/forgot-password", async (req, res) => {
